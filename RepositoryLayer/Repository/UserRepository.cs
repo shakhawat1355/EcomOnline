@@ -9,15 +9,16 @@ namespace RepositoryLayer.Repository
 {
     public class UserRepository : IUserRepository
     {
-        //private readonly AppDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        //public UserRepository(AppDbContext dbContext)
-        //{
-        //    _dbContext = dbContext;
-        //}
+        public UserRepository(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public void AddUser(User user)
         {
-            throw new NotImplementedException();
+            _dbContext.Users.Add(user);
+            _dbContext.SaveChanges();
         }
 
         public User GetUserById(int id)

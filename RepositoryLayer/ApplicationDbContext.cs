@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace EcomOnline.Data
+namespace RepositoryLayer
 {
     public class ApplicationDbContext : IdentityDbContext
     {

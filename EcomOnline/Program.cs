@@ -1,7 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using DomainLayer.DomainModel;
-using EcomOnline.Data;
+using RepositoryLayer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repository;
@@ -41,7 +41,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
-
+    var userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
     // Insert a new user
     var newUser = new User
     {
@@ -51,20 +51,20 @@ using (var scope = app.Services.CreateScope())
         Password = "password123"
     };
 
-    userService.RegisterUser(newUser);
-
+    //userService.RegisterUser(newUser);
+    userRepository.AddUser(newUser);
     // Retrieve the user by ID
-    var retrievedUser = userService.GetUserById(newUser.Id);
+    //var retrievedUser = userService.GetUserById(newUser.Id);
 
-    // Use the retrieved user
-    if (retrievedUser != null)
-    {
-        Console.WriteLine($"Retrieved User: ID={retrievedUser.Id}, Name={retrievedUser.Name}");
-    }
-    else
-    {
-        Console.WriteLine("User not found.");
-    }
+    //// Use the retrieved user
+    //if (retrievedUser != null)
+    //{
+    //    Console.WriteLine($"Retrieved User: ID={retrievedUser.Id}, Name={retrievedUser.Name}");
+    //}
+    //else
+    //{
+    //    Console.WriteLine("User not found.");
+    //}
 }
 
 
