@@ -1,4 +1,5 @@
 ﻿using DomainLayer.DomainModel;
+using RepositoryLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,16 @@ namespace ServiceLayer.Services
 {
     public class UserService : IUserService
     {
+        private readonly ApplicationDbContext _dbContext;
+
+        public UserService(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            var user = _dbContext.Users.FirstOrDefault(x => x.Id == id);
+            return user;
         }
 
         public void RegisterUser(User user)
