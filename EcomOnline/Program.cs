@@ -1,8 +1,26 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using DomainLayer.DomainModel;
 using EcomOnline.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using RepositoryLayer.Repository;
+using ServiceLayer.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//builder.RegisterType<UserRepository>().As<IUserRepository>();
+//builder.RegisterType<UserService>().As<IUserService>();
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    containerBuilder.RegisterType<UserRepository>().As<IUserRepository>();
+    containerBuilder.RegisterType<UserService>().As<IUserService>();
+});
+
+
+
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -15,6 +33,44 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+
+
+
+
+using (var scope = app.Services.CreateScope())
+{
+    var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
+
+    // Insert a new user
+    var newUser = new User
+    {
+        Name = "John Doe",
+        age = 30,
+        Email = "john@example.com",
+        Password = "password123"
+    };
+
+    userService.RegisterUser(newUser);
+
+    // Retrieve the user by ID
+    var retrievedUser = userService.GetUserById(newUser.Id);
+
+    // Use the retrieved user
+    if (retrievedUser != null)
+    {
+        Console.WriteLine($"Retrieved User: ID={retrievedUser.Id}, Name={retrievedUser.Name}");
+    }
+    else
+    {
+        Console.WriteLine("User not found.");
+    }
+}
+
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
