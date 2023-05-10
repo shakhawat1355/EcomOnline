@@ -1,0 +1,29 @@
+﻿
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Hi from Theme folder Index</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.age</td>
+                <td>@user.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>
