@@ -10,6 +10,7 @@ using EcomOnline.Models;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc.Razor;
+using System.Web.Mvc;
 using RazorViewEngine = Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine;
 using Autofac.Core;
 
