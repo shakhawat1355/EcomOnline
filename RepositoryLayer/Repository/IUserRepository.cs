@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repository
 {
-    public interface IUserRepository
+    public interface IUserService
     {
-        void AddUser(User user);
+        void RegisterUser(User user);
         User GetUserById(int id);
+        // Define other service methods as needed
+        public List<User> GetAllUsers();
+
     }
 }
