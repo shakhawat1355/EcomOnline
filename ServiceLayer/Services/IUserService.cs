@@ -12,5 +12,7 @@ namespace ServiceLayer.Services
         void RegisterUser(User user);
         User GetUserById(int id);
         // Define other service methods as needed
+        public List<User> GetAllUsers();
+        
     }
 }

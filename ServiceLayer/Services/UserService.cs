@@ -12,6 +12,10 @@ namespace ServiceLayer.Services
     {
         private readonly ApplicationDbContext _dbContext;
 
+        public UserService()
+        {
+            
+        }
         public UserService(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -26,5 +30,13 @@ namespace ServiceLayer.Services
         {
             throw new NotImplementedException();
         }
+
+
+        public List<User> GetAllUsers()
+        {
+            var AllUsers = _dbContext.Users.ToList();
+            return AllUsers;
+        }
     }
 }
+

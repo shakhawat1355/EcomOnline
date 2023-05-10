@@ -38,34 +38,34 @@ var app = builder.Build();
 
 
 
-using (var scope = app.Services.CreateScope())
-{
-    var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
-    var userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
-    // Insert a new user
-    var newUser = new User
-    {
-        Name = "John Doe 2",
-        age = 30,
-        Email = "john@example.com",
-        Password = "password123"
-    };
+//using (var scope = app.Services.CreateScope())
+//{
+//    var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
+//    var userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
+//    // Insert a new user
+//    var newUser = new User
+//    {
+//        Name = "John Doe 2",
+//        age = 30,
+//        Email = "john@example.com",
+//        Password = "password123"
+//    };
 
-    //userService.RegisterUser(newUser);
-    userRepository.AddUser(newUser);
-    // Retrieve the user by ID
-    var retrievedUser = userService.GetUserById(1);
+//    //userService.RegisterUser(newUser);
+//    userRepository.AddUser(newUser);
+//    // Retrieve the user by ID
+//    var retrievedUser = userService.GetUserById(1);
 
-    // Use the retrieved user
-    if (retrievedUser != null)
-    {
-        Console.WriteLine($"Retrieved User: ID={retrievedUser.Id}, Name={retrievedUser.Name}");
-    }
-    else
-    {
-        Console.WriteLine("User not found.");
-    }
-}
+//    // Use the retrieved user
+//    if (retrievedUser != null)
+//    {
+//        Console.WriteLine($"Retrieved User: ID={retrievedUser.Id}, Name={retrievedUser.Name}");
+//    }
+//    else
+//    {
+//        Console.WriteLine("User not found.");
+//    }
+//}
 
 
 
