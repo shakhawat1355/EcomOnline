@@ -6,6 +6,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repository;
 using ServiceLayer.Services;
+using EcomOnline.Models;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.Razor;
+using System.Web.Mvc;
+using RazorViewEngine = Microsoft.AspNetCore.Mvc.Razor.RazorViewEngine;
+using Autofac.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,40 +39,55 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+
+
+
+
+builder.Services.Configure<RazorViewEngineOptions>(options =>
+{
+    options.ViewLocationExpanders.Add(new CustomViewLocationExpander());
+});
+
+
+
+//builder.ConfigureServices((hostContext, services) =>
+//{
+//    services.Configure<RazorViewEngineOptions>(options =>
+//    {
+//        options.ViewLocationFormats.Clear();
+//        options.ViewLocationFormats.Add("~/Views/{1}/{0}.cshtml");
+//        options.ViewLocationFormats.Add("~/Views/Shared/{0}.cshtml");
+//        options.ViewLocationFormats.Add("~/NewViewLocation/{0}.cshtml");
+//    });
+//});
+
+
+
+
 var app = builder.Build();
 
 
 
 
 
-//using (var scope = app.Services.CreateScope())
+
+
+
+//var viewEngines = ViewEngines.Engines;
+
+
+//var viewEngines = ViewEngines.Engines;
+//var razorViewEngine = viewEngines.OfType<RazorViewEngine>().FirstOrDefault();
+//if (razorViewEngine != null)
 //{
-//    var userService = scope.ServiceProvider.GetRequiredService<IUserService>();
-//    var userRepository = scope.ServiceProvider.GetRequiredService<IUserRepository>();
-//    // Insert a new user
-//    var newUser = new User
-//    {
-//        Name = "John Doe 2",
-//        age = 30,
-//        Email = "john@example.com",
-//        Password = "password123"
-//    };
-
-//    //userService.RegisterUser(newUser);
-//    userRepository.AddUser(newUser);
-//    // Retrieve the user by ID
-//    var retrievedUser = userService.GetUserById(1);
-
-//    // Use the retrieved user
-//    if (retrievedUser != null)
-//    {
-//        Console.WriteLine($"Retrieved User: ID={retrievedUser.Id}, Name={retrievedUser.Name}");
-//    }
-//    else
-//    {
-//        Console.WriteLine("User not found.");
-//    }
+//    razorViewEngine.ViewLocationFormats = new[]
+//     {
+//                "~/Views/{1}/{0}.cshtml",
+//                "~/Views/Shared/{0}.cshtml",
+//                "~/NewViewLocation/{0}.cshtml"
+//            };
 //}
+
 
 
 
