@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\ProductController.cs" />
+    <Compile Remove="Models\CustomViewLocationExpander.cs" />
   </ItemGroup>
 
   <ItemGroup>

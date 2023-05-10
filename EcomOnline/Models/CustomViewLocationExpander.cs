@@ -30,7 +30,7 @@ namespace EcomOnline.Models
             "~/Themes/ThemeA/Home/Index.cshtml",
             "~/Themes/ThemeA/Shared/{0}.cshtml",
             "~/NewViewLocation/{0}.cshtml"
-            }.Concat(viewLocations); ;
+            };
         }
 
         public void PopulateValues(ViewLocationExpanderContext context)

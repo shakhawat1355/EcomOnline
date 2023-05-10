@@ -40,26 +40,21 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 
-
-
-
-builder.Services.Configure<RazorViewEngineOptions>(options =>
-{
-    options.ViewLocationExpanders.Add(new CustomViewLocationExpander());
-});
-
-
-
-//builder.ConfigureServices((hostContext, services) =>
+//builder.Services.Configure<RazorViewEngineOptions>(options =>
 //{
-//    services.Configure<RazorViewEngineOptions>(options =>
-//    {
-//        options.ViewLocationFormats.Clear();
-//        options.ViewLocationFormats.Add("~/Views/{1}/{0}.cshtml");
-//        options.ViewLocationFormats.Add("~/Views/Shared/{0}.cshtml");
-//        options.ViewLocationFormats.Add("~/NewViewLocation/{0}.cshtml");
-//    });
+//    options.ViewLocationExpanders.Add(new CustomViewLocationExpander());
 //});
+
+
+//builder.Services.Configure<RazorViewEngineOptions>(options =>
+//{
+//    options.ViewLocationFormats.Clear();
+//    options.ViewLocationFormats.Add("/Themes/ThemeA/{1}/{0}.cshtml");
+//    options.ViewLocationFormats.Add("/Themes/ThemeA/Shared/{0}.cshtml");
+//    options.ViewLocationFormats.Add("/Views/{1}/{0}.cshtml");
+//    options.ViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+//});
+
 
 
 
