@@ -15,6 +15,7 @@ namespace RepositoryLayer.Repository
         {
             _dbContext = dbContext;
         }
+
         public void AddUser(User user)
         {
             _dbContext.Users.Add(user);
