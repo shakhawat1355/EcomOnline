@@ -8,8 +8,10 @@ namespace EcomOnline.Models
         {
             var themeViewLocations = new[]
             {
-            "/Theme/ThemeA/{1}/{0}.cshtml",
-            "/Theme/ThemeA/Shared/{0}.cshtml"
+               "/Theme/ThemeA/{1}/{0}.cshtml",
+            "/Theme/ThemeA/Shared/{0}.cshtml",
+           "/Theme/ThemeB/{1}/{0}.cshtml",
+            "/Theme/ThemeB/Shared/{0}.cshtml"
             };
 
             return themeViewLocations.Concat(viewLocations);

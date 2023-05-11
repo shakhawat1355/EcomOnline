@@ -46,14 +46,14 @@ builder.Services.Configure<RazorViewEngineOptions>(options =>
 });
 
 
-//builder.Services.Configure<RazorViewEngineOptions>(options =>
-//{
-//    options.ViewLocationFormats.Clear();
-//    options.ViewLocationFormats.Add("/Theme/ThemeA/{1}/{0}.cshtml");
-//    options.ViewLocationFormats.Add("/Theme/ThemeA/Shared/{0}.cshtml");
-//    options.ViewLocationFormats.Add("/Views/{1}/{0}.cshtml");
-//    options.ViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
-//});
+builder.Services.Configure<RazorViewEngineOptions>(options =>
+{
+    options.ViewLocationFormats.Clear();
+    options.ViewLocationFormats.Add("/Theme/ThemeA/{1}/{0}.cshtml");
+    options.ViewLocationFormats.Add("/Theme/ThemeA/Shared/{0}.cshtml");
+    options.ViewLocationFormats.Add("/Views/{1}/{0}.cshtml");
+    options.ViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+});
 
 
 
